@@ -138,6 +138,7 @@ addons: |
     privileged: false
     allowPrivilegeEscalation: false
     defaultAllowPrivilegeEscalation: false
+    hostPID: false
     fsGroup:
       rule: RunAsAny
     runAsUser:
