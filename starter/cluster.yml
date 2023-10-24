@@ -221,8 +221,8 @@ ssh_agent_auth: false
 authorization:
   mode: rbac
   options: {}
-ignore_docker_version: null
-kubernetes_version: ""
+ignore_docker_version: false
+kubernetes_version: v1.18.12-rancher1-1
 private_registries: []
 ingress:
   provider: ""
