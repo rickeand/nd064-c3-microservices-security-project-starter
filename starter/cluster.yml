@@ -1,9 +1,9 @@
 # author: nick.reva@snap.com
 # created April 11, 2021
 nodes:
-- address: 192.168.56.4
+- address: 192.168.50.101
   port: "22"
-  internal_address: 192.168.56.4
+  internal_address: 192.168.50.101
   role:
   - controlplane
   - etcd
