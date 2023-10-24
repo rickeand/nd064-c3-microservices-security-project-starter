@@ -1,9 +1,9 @@
 # author: nick.reva@snap.com
 # created April 11, 2021
 nodes:
-- address: 192.168.50.101
+- address: 192.168.56.4
   port: "22"
-  internal_address: 192.168.50.101
+  internal_address: 192.168.56.4
   role:
   - controlplane
   - etcd
@@ -117,7 +117,7 @@ services:
     win_extra_binds: []
     win_extra_env: []
 network:
-  plugin: canal
+  plugin: calico
   options: {}
   mtu: 0
   node_selector: {}
@@ -138,7 +138,6 @@ addons: |
     privileged: false
     allowPrivilegeEscalation: false
     defaultAllowPrivilegeEscalation: false
-    hostPID: false
     fsGroup:
       rule: RunAsAny
     runAsUser:
@@ -239,9 +238,6 @@ ingress:
   https_port: 0
   network_mode: ""
   tolerations: []
-  default_backend: null
-  default_http_backend_priority_class_name: ""
-  nginx_ingress_controller_priority_class_name: ""
 cluster_name: ""
 cloud_provider:
   name: ""
@@ -263,9 +259,13 @@ monitoring:
   update_strategy: null
   replicas: null
   tolerations: []
-  metrics_server_priority_class_name: ""
 restore:
   restore: false
   snapshot_name: ""
 rotate_encryption_key: false
 dns: null
+upgrade_strategy:
+max_unavailable_worker: ""
+max_unavailable_controlplane: ""
+drain: null
+node_drain_input: null
