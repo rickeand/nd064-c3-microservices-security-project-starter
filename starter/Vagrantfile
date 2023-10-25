@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", inline: <<-SHELL
       sudo zypper --non-interactive install apparmor-parser
       # install Docker
-      zypper --non-interactive install docker #python3-docker-compose
+      zypper --non-interactive install docker-20.10.12_ce-159.1
       systemctl enable docker
       usermod -G docker -a $USER
       systemctl restart docker
