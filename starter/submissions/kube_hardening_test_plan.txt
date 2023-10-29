@@ -1,0 +1,4 @@
+1. How will you test the changes?
+The changes should be tested in a non-production enviroment which is a clone of production to ensure the validity of the test. If the test are successfull a small amount of production traffic can be redirected to the test environment. While monitoring the test cluster in grafana and prometheus, the amount of traffic can be increased as long as the metrics are in the expected range.
+2. How will you ensure the changes don't negatively affect your cluster?
+The split of traffic and the use of the test cluster will minimize the damage to our user base. The hardening steps can be applied one by one. If a change is to restrictive and breaks the test cluster the change can be reverted.

@@ -1,0 +1,19 @@
+1. Incident commander name:
+    Andreas Rickert
+2.Executive summary of what happened
+    High CPU usage was discovered on 28.10.2023. Three crypto mining pods were discovered on our kubernetes cluster as the reason for this.
+
+3.Summary of what was affected
+    The attacker was able to gain access to several nodes in the cluster and use them to run their malicious mining software.
+    This resulted in increased resource usage and decreased performance on the affected nodes.
+
+4.Summary of the impact
+    The high CPU load resulted in a slow response time of our services running in the cluster.
+
+5.Summary of the remediation steps
+    The three pods were removed and the cluster was checked for vulnerablities.
+    A CPU limit was put in place to protect the cluster from running out of resources in the future.
+
+6.Summary of lessons learned
+    To prevent such attacks in the future the access to the api server was restricted.
+    Admission contoller were put in place to prohibit the deployment of unverified images.

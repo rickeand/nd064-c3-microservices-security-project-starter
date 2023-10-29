@@ -29,17 +29,34 @@ Given Kubernetes' system components and the STRIDE framework, identify five pote
 Docker-bench Run Results and Analysis
 From the failed findings, select and document 3 findings from the Docker-bench results that you want to harden based on the 5 attack surface areas you identified in Step 1. At least 1 of the 3 hardened findings should be different from the ones mentioned in the exercise (i.e. 5.10, 5.14, and 5.22).
 
-[FAIL] 2.2 Ensure network traffic is restricted between containers on the default bridge (Automated)
+audit rule file: /etc/audit/rules.d/audit.rules
 
-- Denial of Service: [FAIL] 5.11 Ensure that CPU priority is set appropriately on container (Automated)
-  Solution: use --cpu-shares flag to distribute resources to the containers according to their priority
-  Example: docker run --interactive --tty --cpu-shares 512 centos /bin/bash
+1.1.8 Ensure auditing is configured for Docker files and directories - containerd.sock
+add -w /run/containerd/containerd.sock -k docker to /etc/audit/rules.d/audit.rules and run sudo systemctl restart auditd
 
-- Spoofing [FAIL] [FAIL] 4.5 Ensure Content trust for Docker is Enabled (Automated)
-  Solution:
-  Example:
+1.1.11 Ensure auditing is configured for Docker files and directories - /etc/docker/daemon.json
+add -w /etc/docker/daemon.json -k docker to /etc/audit/rules.d/audit.rules and run sudo systemctl restart auditd
 
-- Elevation of Privilege [FAIL] 5.25 Ensure that the container is restricted from acquiring additional privileges (Automated)
-  Solution: Add 'no-new-privileges' to the security options
-  Example: docker run --rm -it --security-opt=no-new-privileges ubuntu bash
+1.1.12 Ensure auditing is configured for Docker files and directories - /etc/containerd/config.toml
+add -w /etc/containerd/config.toml -k docker to /etc/audit/rules.d/audit.rules and run sudo systemctl restart auditd
+
+1.1.14 Ensure auditing is configured for Docker files and directories - /usr/bin/containerd
+add -w /usr/bin/containerd -k docker to /etc/audit/rules.d/audit.rules and run sudo systemctl restart auditd
+
+1.1.15 Ensure auditing is configured for Docker files and directories - /usr/bin/containerd-shim
+add -w /usr/bin/containerd-shim -k docker to /etc/audit/rules.d/audit.rules and run sudo systemctl restart auditd
+
+1.1.16 Ensure auditing is configured for Docker files and directories - /usr/bin/containerd-shim-runc-v1
+add -w /usr/bin/containerd-shim-runc-v1 -k docker to /etc/audit/rules.d/audit.rules and run sudo systemctl restart auditd
+
+1.1.17 Ensure auditing is configured for Docker files and directories - /usr/bin/containerd-shim-runc-v2
+add -w /usr/bin/containerd-shim-runc-v2 -k docker to /etc/audit/rules.d/audit.rules and run sudo systemctl restart auditd
+
+1.1.18 Ensure auditing is configured for Docker files and directories - /usr/bin/runc
+add -w /usr/bin/runc -k docker to /etc/audit/rules.d/audit.rules and run sudo systemctl restart auditd
+
+
+
+
+
 
